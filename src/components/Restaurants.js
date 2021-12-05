@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Restaurants({cardItem}) {
     return (
         <>
-        <Link to={`restaurants/${cardItem.id}`}>
+        <Link style={{textDecoration:"none"}}to={`restaurants/${cardItem.id}`}>
            <Card className="my-3 p-3 rounded cards">
                 <Card.Img src={cardItem.photograph} className="p-3" variant="top"/>
                 <Card.Body>
