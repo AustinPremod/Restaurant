@@ -59,7 +59,7 @@ function RestaurantsDetails() {
           </Col>
           <Row>
               <Card className="my-3 mx-3 p-3 rounded cards">
-                    <Rating data={details.reviews}/>
+                    <Rating ResData={details.reviews}/>
               </Card>
           </Row>
         </Row>
