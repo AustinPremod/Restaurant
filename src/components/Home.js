@@ -1,23 +1,31 @@
 import React,{useState,useEffect} from 'react'
 import {Col,Row} from 'react-bootstrap'
 import Restaurants from './Restaurants'
-function Home() {
+import {listRestaurants} from '../actions/restaurantAction'
+import {useDispatch,useSelector} from 'react-redux'
 
-    const [hotels,setHotels]=useState([])
+function Home() {
+    const dispatch=useDispatch();
+    const restaurantReducer=useSelector(state=>state.restaurantReducer)
+    const {restaurants} =restaurantReducer
+    // const [hotels,setHotels]=useState([])
     useEffect(()=>{
-        const FetchData=async()=>{
-            await fetch('/restaurants.json')
-            .then((res)=>res.json())
-            .then((data)=>setHotels(data.restaurants))
-        }
-        FetchData();
-    },[])
+        dispatch(listRestaurants())
+
+
+        // const FetchData=async()=>{
+        //     await fetch('/restaurants.json')
+        //     .then((res)=>res.json())
+        //     .then((data)=>setHotels(data.restaurants))
+        // }
+        // FetchData();
+    },[dispatch])
     return (
         <>
-         {hotels ? (
+         {/*hotels*/restaurants ? (
              
                  <Row>
-                 {hotels.map(item=>(
+                 {/*hotels&*/restaurants.map(item=>(
                      <Col sm={12} md={8} lg={6} xl={3}>
                         <Restaurants cardItem={item}/>
                      </Col>
